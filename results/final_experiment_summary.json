@@ -1,0 +1,81 @@
+{
+  "benchmark": "FATE-M",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "mathlib_commit": "8f9d9cff6bd728b17a24e163c9402775d9e6a365",
+  "lean_version": "4.28.0",
+  "model": "deepseek-flash",
+  "temperature": 0.0,
+  "max_attempts": 5,
+  "problems_examined": 25,
+  "baseline": {
+    "solved": 20,
+    "failed": 5,
+    "solve_rate": 0.8,
+    "note": "Problems 1-20 were the original uncapped search. Problems 21-25 used max_output_tokens=16384; 24-25 were baseline-only after the contrast was found."
+  },
+  "strict_contrast_case": {
+    "problem_id": "23",
+    "theorem_name": "isMaximal_of_isPrime_of_fintype",
+    "max_output_tokens": 16384,
+    "baseline": "failure_after_5_attempts",
+    "retrieval_apply": "success_after_2_attempts",
+    "prefix_repair": "failure_after_5_attempts",
+    "full_enhanced": "success_after_1_attempt",
+    "retrieved_lemma_used": "Ideal.isMaximal_of_isPrime",
+    "certified_prefix_events": 0,
+    "independent_lean_return_code": 0,
+    "prohibited_construct": null,
+    "stability_repeats": 0,
+    "stability_note": "No repeat trials were run because experimentation stopped at problem 25 for cost control."
+  },
+  "strict_contrast_resources": {
+    "baseline": {
+      "api_calls": 5,
+      "tokens": 80204,
+      "lean_calls": 1,
+      "runtime_seconds": 413.607983874972
+    },
+    "retrieval_apply": {
+      "api_calls": 2,
+      "tokens": 32344,
+      "lean_calls": 2,
+      "runtime_seconds": 226.14549737499328
+    },
+    "prefix_repair": {
+      "api_calls": 5,
+      "tokens": 77265,
+      "lean_calls": 5,
+      "runtime_seconds": 607.4788967919885
+    },
+    "full_enhanced": {
+      "api_calls": 1,
+      "tokens": 10299,
+      "lean_calls": 2,
+      "runtime_seconds": 138.5090494999895
+    }
+  },
+  "all_condition_summaries_in_results": {
+    "condition_runs": 42,
+    "proof_generation_api_calls": 105,
+    "retrieval_tool_calls": 16,
+    "input_tokens": 77627,
+    "output_tokens": 2317854,
+    "total_tokens": 2395481,
+    "lean_calls_logged": 118,
+    "agent_runtime_seconds": 14469.027740499121,
+    "note": "Includes setup smoke tests, debugging reruns, the first-20 search, the 21-23 contrast search, ablations, and baseline runs for 24-25."
+  },
+  "connection_test": {
+    "api_calls": 1,
+    "total_tokens": 53,
+    "success": true
+  },
+  "setup_issue": {
+    "problem_25_initial_launch": "Transient TLS EOF before an API response; rerun completed normally and the failed connection was not counted as a theorem attempt."
+  },
+  "primary_evidence": {
+    "search_summary": "results/contrast_20260917T001511440652Z_search_summary.json",
+    "contrast_report": "results/contrast_case.md",
+    "independent_scratch": "scratch/independent_final_verification/23/full_enhanced_final.lean"
+  }
+}

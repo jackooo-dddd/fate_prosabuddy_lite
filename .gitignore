@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+results/*
+!results/.gitkeep
+!results/contrast_case.md
+!results/final_experiment_summary.json
+scratch/*
+!scratch/.gitkeep
+benchmark/prosabuddy-reference/
