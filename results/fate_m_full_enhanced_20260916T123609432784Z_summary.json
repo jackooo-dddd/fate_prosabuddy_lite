@@ -1,0 +1,42 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "full_enhanced",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 0,
+  "solve_rate": 0.0,
+  "average_attempts": 5.0,
+  "average_attempts_among_solved": 0.0,
+  "proof_generation_api_calls": 5,
+  "retrieval_tool_calls": 2,
+  "lean_compiler_calls": 12,
+  "input_tokens": 5037,
+  "output_tokens": 195439,
+  "total_tokens": 200476,
+  "runtime": 1391.3780712920125,
+  "problems": [
+    {
+      "problem_id": "19",
+      "theorem_name": "ZMod.isField_iff_prime",
+      "mode": "full_enhanced",
+      "success": false,
+      "attempts": 5,
+      "final_proof": "by\n  constructor\n  · intro h\n    rw [Nat.prime_iff_not_exists_mul_eq]\n    constructor\n    · by_contra hn\n      have hn' : n = 0 ∨ n = 1 := by omega\n      rcases hn' with rfl | rfl\n      · have h2 : (2 : ZMod 0) ≠ 0 := by\n          rw [ZMod.natCast_zmod_eq_zero_iff_dvd]\n          norm_num\n        have hunit : IsUnit (2 : ZMod 0) :=\n          isUnit_iff_exists_inv.mpr ⟨(2 : ZMod 0)⁻¹, h.mul_inv_cancel _ h2⟩\n        have hcop : IsCoprime (0 : ℤ) 2 := by\n          apply (ZMod.coe_int_isUnit_iff_isCoprime (2 : ℤ) 0).mp\n          simpa using hunit\n        rcases hcop with ⟨a, b, hab⟩\n        simp at hab\n        omega\n      · exact h.zero_ne_one (Subsingleton.elim (0 : ZMod 1) (1 : ZMod 1))\n    · rintro ⟨m, k, hm, hk, hmk⟩\n      have hnpos : 0 < n := by omega\n      have hm0 : (m : ZMod n) ≠ 0 := by\n        rw [ZMod.natCast_zmod_eq_zero_iff_dvd]\n        intro hdvd\n        have hm_eq : m = 0 := Nat.eq_zero_of_dvd_of_lt hdvd hm\n        have : n = 0 := by\n          rw [← hmk, hm_eq, zero_mul]\n        omega\n      have hk0 : (k : ZMod n) ≠ 0 := by\n        rw [ZMod.natCast_zmod_eq_zero_iff_dvd]\n        intro hdvd\n        have hk_eq : k = 0 := Nat.eq_zero_of_dvd_of_lt hdvd hk\n        have : n = 0 := by\n          rw [← hmk, hk_eq, mul_zero]\n        omega\n      have hprod : (m : ZMod n) * (k : ZMod n) = 0 := by\n        rw [← Nat.cast_mul, hmk, ZMod.natCast_self]\n      have hk_eq : (k : ZMod n) = 0 := by\n        have hm_inv := h.mul_inv_cancel (m : ZMod n) hm0\n        calc\n          (k : ZMod n) = 1 * (k : ZMod n) := by rw [one_mul]\n          _ = ((m : ZMod n) * (m : ZMod n)⁻¹) * (k : ZMod n) := by rw [← hm_inv]\n          _ = (m : ZMod n)⁻¹ * ((m : ZMod n) * (k : ZMod n)) := by ring\n          _ = (m : ZMod n)⁻¹ * 0 := by rw [hprod]\n          _ = 0 := by rw [mul_zero]\n      exact hk0 hk_eq\n  · intro hn\n    haveI : Fact (Nat.Prime n) := ⟨hn⟩\n    infer_instance",
+      "final_lean_return_code": 1,
+      "api_calls": 5,
+      "retrieval_tool_calls": 2,
+      "lean_calls": 12,
+      "input_tokens": 5037,
+      "output_tokens": 195439,
+      "total_tokens": 200476,
+      "runtime": 1391.3780712920125,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_full_enhanced_20260916T123609432784Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_full_enhanced_20260916T123609432784Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "timestamp": "2026-09-16T12:59:20.923542+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_full_enhanced_20260916T123609432784Z.jsonl"
+}

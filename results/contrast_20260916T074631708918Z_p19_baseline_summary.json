@@ -1,0 +1,17 @@
+{
+  "problem_id": "19",
+  "theorem_name": "ZMod.isField_iff_prime",
+  "mode": "baseline",
+  "success": false,
+  "attempts": 5,
+  "final_proof": "by\n  constructor\n  · intro hf\n    have hn0 : n ≠ 0 := by\n      intro hn\n      subst hn\n      have h2 : (2 : ZMod 0) ≠ 0 := by\n        rw [ZMod.natCast_zmod_eq_zero_iff_dvd 2]\n        simp\n      rcases hf.mul_inv_cancel h2 with ⟨c, hc⟩\n      rcases ZMod.intCast_surjective 0 c with ⟨k, hk⟩\n      have h' : (2 : ZMod 0) * (k : ZMod 0) = 1 := by\n        rw [← hk]\n        exact hc\n      have h_int : (((2 : ℤ) * k : ℤ) : ZMod 0) = ((1 : ℤ) : ZMod 0) := by\n        push_cast\n        exact h'\n      have hdiv : (0 : ℤ) ∣ ((2 : ℤ) * k - 1) :=\n        (ZMod.intCast_eq_intCast_iff ((2 : ℤ) * k) 1 0).mp h_int\n      rcases hdiv with ⟨d, hd⟩\n      rw [zero_mul] at hd\n      omega\n    have hn1 : n ≠ 1 := by\n      intro hn1\n      haveI : Subsingleton (ZMod n) := (ZMod.subsingleton_iff n).mpr hn1\n      rcases hf.exists_pair_ne with ⟨x, y, hxy⟩\n      exact hxy (Subsingleton.elim x y)\n    have hn_ge_two : 2 ≤ n := by omega\n    rw [Nat.prime_def_lt]\n    refine ⟨hn_ge_two, ?_⟩\n    intro m hm_lt hm_dvd\n    by_contra hm_ne_one\n    rcases hm_dvd with ⟨k, hk⟩\n    have hm_ne_zero : m ≠ 0 := by\n      intro hm0\n      have hk' : n = 0 := by simpa [hm0] using hk\n      exact hn0 hk'\n    have hk_ne_zero : k ≠ 0 := by\n      intro hk0\n      have hk' : n = 0 := by simpa [hk0] using hk\n      exact hn0 hk'\n    have hm_gt_one : 1 < m := by omega\n    have hk_lt : k < n := by\n      rw [hk]\n      have hk_pos : 0 < k := Nat.pos_of_ne_zero hk_ne_zero\n      have : k * 1 < k * m := mul_lt_mul_of_pos_left hm_gt_one hk_pos\n      simpa [mul_comm] using this\n    have hm_cast_ne_zero : (m : ZMod n) ≠ 0 := by\n      intro hmz\n      have hdiv : n ∣ m := (ZMod.natCast_zmod_eq_zero_iff_dvd m).mp hmz\n      have hm_zero : m = 0 := Nat.eq_zero_of_dvd_of_lt hdiv hm_lt\n      exact hm_ne_zero hm_zero\n    have hk_cast_ne_zero : (k : ZMod n) ≠ 0 := by\n      intro hkz\n      have hdiv : n ∣ k := (ZMod.natCast_zmod_eq_zero_iff_dvd k).mp hkz\n      have hk_zero : k = 0 := Nat.eq_zero_of_dvd_of_lt hdiv hk_lt\n      exact hk_ne_zero hk_zero\n    have hmk_zero : (m : ZMod n) * (k : ZMod n) = 0 := by\n      rw [← Nat.cast_mul, ← hk, ZMod.natCast_self]\n    have no_zero_divisors : ∀ {a b : ZMod n}, a ≠ 0 → b ≠ 0 → a * b ≠ 0 := by\n      intro a b ha hb hab\n      rcases hf.mul_inv_cancel ha with ⟨c, hc⟩\n      have hc' : c * a = 1 := by rw [mul_comm c a, hc]\n      have : b = 0 := by\n        calc\n          b = 1 * b := by rw [one_mul]\n          _ = (c * a) * b := by rw [← hc']\n          _ = c * (a * b) := by rw [mul_assoc]\n          _ = c * 0 := by rw [hab]\n          _ = 0 := by rw [mul_zero]\n      exact hb this\n    exact (no_zero_divisors hm_cast_ne_zero hk_cast_ne_zero) hmk_zero\n  · intro hn\n    letI : Fact (Nat.Prime n) := ⟨hn⟩\n    infer_instance",
+  "final_lean_return_code": 1,
+  "api_calls": 5,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 5,
+  "input_tokens": 5741,
+  "output_tokens": 195153,
+  "total_tokens": 200894,
+  "runtime": 973.8512851250125,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p19_baseline.jsonl"
+}

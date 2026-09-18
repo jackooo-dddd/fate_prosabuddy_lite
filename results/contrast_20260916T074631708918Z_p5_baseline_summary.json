@@ -1,0 +1,17 @@
+{
+  "problem_id": "5",
+  "theorem_name": "has_inverse_iff_isomorphism",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  constructor\n  · rintro ⟨φ₁, hleft, hright⟩\n    constructor\n    · intro x y hxy\n      calc\n        x = φ₁ (φ x) := (hleft x).symm\n        _ = φ₁ (φ y) := by rw [hxy]\n        _ = y := hleft y\n    · intro y\n      exact ⟨φ₁ y, hright y⟩\n  · rintro ⟨hinj, hsurj⟩\n    classical\n    let φ₁ : G' → G := fun y => Classical.choose (hsurj y)\n    have hright : Function.RightInverse φ₁ φ := fun y => Classical.choose_spec (hsurj y)\n    have hleft : Function.LeftInverse φ₁ φ := by\n      intro x\n      apply hinj\n      exact hright (φ x)\n    exact ⟨φ₁, hleft, hright⟩",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 342,
+  "output_tokens": 2116,
+  "total_tokens": 2458,
+  "runtime": 29.977712249965407,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p5_baseline.jsonl"
+}

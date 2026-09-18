@@ -1,0 +1,17 @@
+{
+  "problem_id": "20",
+  "theorem_name": "Field.ideal_eq_bot_or_top",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 2,
+  "final_proof": "by\n  simpa using Ideal.eq_bot_or_top I",
+  "final_lean_return_code": 0,
+  "api_calls": 2,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 2,
+  "input_tokens": 693,
+  "output_tokens": 55099,
+  "total_tokens": 55792,
+  "runtime": 320.79098291601986,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p20_baseline.jsonl"
+}

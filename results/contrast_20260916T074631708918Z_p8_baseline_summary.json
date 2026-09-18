@@ -1,0 +1,17 @@
+{
+  "problem_id": "8",
+  "theorem_name": "conj_ker_eq_center",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 2,
+  "final_proof": "by\n  ext x\n  rw [MonoidHom.mem_ker, Subgroup.mem_center_iff]\n  constructor\n  · intro h y\n    have hy : (MulAut.conj x) y = y := by\n      rw [h]\n      simp\n    have hy' : x * y * x⁻¹ = y := by\n      simpa [MulAut.conj_apply] using hy\n    calc\n      y * x = (x * y * x⁻¹) * x := by rw [hy']\n      _ = x * y := by group\n  · intro h\n    ext y\n    simp [MulAut.conj_apply]\n    rw [← h y]\n    group",
+  "final_lean_return_code": 0,
+  "api_calls": 2,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 2,
+  "input_tokens": 894,
+  "output_tokens": 30532,
+  "total_tokens": 31426,
+  "runtime": 209.64156008302234,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p8_baseline.jsonl"
+}

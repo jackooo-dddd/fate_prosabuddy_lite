@@ -1,0 +1,17 @@
+{
+  "problem_id": "9",
+  "theorem_name": "orderOf_eq_zero_of_monoidHom",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  have hpow : a ^ orderOf a = 1 := pow_orderOf_eq_one a\n  have hfpow : (f a) ^ orderOf a = 1 := by\n    simpa only [map_pow, map_one] using congrArg f hpow\n  have hdvd : orderOf (f a) ∣ orderOf a := (orderOf_dvd_iff_pow_eq_one).2 hfpow\n  rw [h] at hdvd\n  rcases hdvd with ⟨k, hk⟩\n  simpa using hk",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 297,
+  "output_tokens": 11820,
+  "total_tokens": 12117,
+  "runtime": 78.75333095900714,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p9_baseline.jsonl"
+}

@@ -1,0 +1,17 @@
+{
+  "problem_id": "16",
+  "theorem_name": "Ideal.span_eq_iff_associated",
+  "mode": "full_enhanced",
+  "success": false,
+  "attempts": 5,
+  "final_proof": "by\n  rw [Ideal.span_singleton_eq_span_singleton]\n  constructor\n  · intro h\n    rw [associated_iff_eq_mul_unit] at h\n    rcases h with ⟨u, hu⟩\n    refine ⟨(u : R), ⟨u, rfl⟩, ?_⟩\n    rw [hu, mul_comm]\n  · rintro ⟨u, hu, hr⟩\n    exact associated_iff_eq_mul_unit.mpr ⟨hu.unit, by simpa [IsUnit.unit_spec] using hr⟩",
+  "final_lean_return_code": 1,
+  "api_calls": 5,
+  "retrieval_tool_calls": 2,
+  "lean_calls": 12,
+  "input_tokens": 2786,
+  "output_tokens": 94500,
+  "total_tokens": 97286,
+  "runtime": 925.4036272499943,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p16_full_enhanced.jsonl"
+}

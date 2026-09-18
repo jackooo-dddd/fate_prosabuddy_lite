@@ -1,0 +1,17 @@
+{
+  "problem_id": "14",
+  "theorem_name": "zero_of_pow_eq_zero",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  induction n with\n  | zero =>\n      rw [pow_zero] at eq\n      exact (one_ne_zero eq).elim\n  | succ n ih =>\n      rw [pow_succ] at eq\n      rcases (mul_eq_zero.mp eq) with h | h\n      · exact ih h\n      · exact h",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 283,
+  "output_tokens": 7205,
+  "total_tokens": 7488,
+  "runtime": 54.28076454199618,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p14_baseline.jsonl"
+}

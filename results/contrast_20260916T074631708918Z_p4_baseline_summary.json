@@ -1,0 +1,17 @@
+{
+  "problem_id": "4",
+  "theorem_name": "mul_mem_ker_comm",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  simp only [MonoidHom.mem_ker, map_mul]\n  constructor\n  · intro h\n    have h' : f a = (f b)⁻¹ := eq_inv_of_mul_eq_one_left h\n    calc\n      f b * f a = f b * (f b)⁻¹ := by simp [h']\n      _ = 1 := by simp\n  · intro h\n    have h' : f b = (f a)⁻¹ := eq_inv_of_mul_eq_one_left h\n    calc\n      f a * f b = f a * (f a)⁻¹ := by simp [h']\n      _ = 1 := by simp",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 310,
+  "output_tokens": 11030,
+  "total_tokens": 11340,
+  "runtime": 67.28827966598328,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p4_baseline.jsonl"
+}

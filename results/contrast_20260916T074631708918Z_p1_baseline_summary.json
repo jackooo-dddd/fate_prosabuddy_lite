@@ -1,0 +1,17 @@
+{
+  "problem_id": "1",
+  "theorem_name": "prod_card_eq_card_pow",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  rw [Fintype.card_fun]\n  simp",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 319,
+  "output_tokens": 2330,
+  "total_tokens": 2649,
+  "runtime": 33.361974208033644,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p1_baseline.jsonl"
+}

@@ -72,7 +72,9 @@ def build_prefix_messages(
     skill: ActivatedSkill | None,
     retrieval_context: str | None,
 ) -> list[dict[str, str]]:
-    """Ask for only the suffix following a compiler-certified proof prefix."""
+    """Ask for only the suffix following a compiler-certified proof prefix.
+    Don’t ask the LLM to rewrite the entire proof if Lean has already verified 
+    that the beginning of the proof is correct."""
 
     system = BASE_SYSTEM_PROMPT + "\n\n" + ENHANCED_DISCIPLINE
     body = f"""Benchmark: {problem.benchmark}

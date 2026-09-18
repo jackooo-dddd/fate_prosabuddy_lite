@@ -1,0 +1,42 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "full_enhanced",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 1,
+  "solve_rate": 1.0,
+  "average_attempts": 4.0,
+  "average_attempts_among_solved": 4.0,
+  "proof_generation_api_calls": 4,
+  "retrieval_tool_calls": 2,
+  "lean_compiler_calls": 9,
+  "input_tokens": 6447,
+  "output_tokens": 108156,
+  "total_tokens": 114603,
+  "runtime": 856.1263503750088,
+  "problems": [
+    {
+      "problem_id": "16",
+      "theorem_name": "Ideal.span_eq_iff_associated",
+      "mode": "full_enhanced",
+      "success": true,
+      "attempts": 4,
+      "final_proof": "by\n  constructor\n  · intro h\n    have hmem₁ : r₁ ∈ Ideal.span {r₂} := by\n      rw [← h]\n      exact Ideal.subset_span (by simp)\n    have hmem₂ : r₂ ∈ Ideal.span {r₁} := by\n      rw [h]\n      exact Ideal.subset_span (by simp)\n    by_cases hr₂ : r₂ = 0\n    · have hr₁ : r₁ = 0 := by\n        rw [hr₂] at hmem₁\n        rw [Ideal.mem_span_singleton] at hmem₁\n        rcases hmem₁ with ⟨c, hc⟩\n        simpa using hc\n      refine ⟨1, isUnit_one, ?_⟩\n      rw [hr₁, hr₂]\n      simp\n    · rw [Ideal.mem_span_singleton] at hmem₁ hmem₂\n      rcases hmem₁ with ⟨c, hc⟩\n      rcases hmem₂ with ⟨d, hd⟩\n      have hcd : c * d = 1 := by\n        apply mul_left_cancel₀ hr₂\n        calc\n          r₂ * (c * d) = (r₂ * c) * d := by ring\n          _ = r₁ * d := by rw [← hc]\n          _ = r₂ := by rw [← hd]\n          _ = r₂ * 1 := by rw [mul_one]\n      have hcunit : IsUnit c := by\n        refine ⟨⟨c, d, hcd, ?_⟩, rfl⟩\n        rw [mul_comm, hcd]\n      refine ⟨c, hcunit, ?_⟩\n      calc\n        r₁ = r₂ * c := hc\n        _ = c * r₂ := by rw [mul_comm]\n  · rintro ⟨u, hu, rfl⟩\n    ext x\n    rw [Ideal.mem_span_singleton, Ideal.mem_span_singleton]\n    constructor\n    · rintro ⟨c, hc⟩\n      refine ⟨u * c, ?_⟩\n      rw [hc]\n      ring\n    · rintro ⟨c, hc⟩\n      rcases hu with ⟨v, hv⟩\n      have hu_eq : u = ↑v := by rw [hv]\n      rw [hu_eq]\n      refine ⟨↑(v⁻¹) * c, ?_⟩\n      rw [hc]\n      calc\n        r₂ * c = (↑v * ↑(v⁻¹)) * (r₂ * c) := by rw [Units.mul_inv, one_mul]\n        _ = (↑v * r₂) * (↑(v⁻¹) * c) := by ring",
+      "final_lean_return_code": 0,
+      "api_calls": 4,
+      "retrieval_tool_calls": 2,
+      "lean_calls": 9,
+      "input_tokens": 6447,
+      "output_tokens": 108156,
+      "total_tokens": 114603,
+      "runtime": 856.1263503750088,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_full_enhanced_20260916T114058642429Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_full_enhanced_20260916T114058642429Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "timestamp": "2026-09-16T11:55:14.843100+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_full_enhanced_20260916T114058642429Z.jsonl"
+}

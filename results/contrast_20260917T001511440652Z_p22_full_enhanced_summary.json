@@ -1,0 +1,17 @@
+{
+  "problem_id": "22",
+  "theorem_name": "infinite_of_isAlgClosed",
+  "mode": "full_enhanced",
+  "success": false,
+  "attempts": 5,
+  "final_proof": null,
+  "final_lean_return_code": null,
+  "api_calls": 5,
+  "retrieval_tool_calls": 2,
+  "lean_calls": 2,
+  "input_tokens": 4477,
+  "output_tokens": 81920,
+  "total_tokens": 86397,
+  "runtime": 428.0283183330321,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260917T001511440652Z_p22_full_enhanced.jsonl"
+}

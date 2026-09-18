@@ -1,0 +1,17 @@
+{
+  "problem_id": "12",
+  "theorem_name": "existUnique_ringHom_int",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  refine ⟨Int.castRingHom R, trivial, ?_⟩\n  intro g _\n  apply RingHom.ext\n  intro n\n  exact map_intCast g n",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 264,
+  "output_tokens": 7900,
+  "total_tokens": 8164,
+  "runtime": 55.41878595901653,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p12_baseline.jsonl"
+}

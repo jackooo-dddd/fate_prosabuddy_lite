@@ -1,0 +1,17 @@
+{
+  "problem_id": "23",
+  "theorem_name": "isMaximal_of_isPrime_of_fintype",
+  "mode": "retrieval_apply",
+  "success": true,
+  "attempts": 2,
+  "final_proof": "by\n  exact Ideal.IsPrime.isMaximal' hI",
+  "final_lean_return_code": 0,
+  "api_calls": 2,
+  "retrieval_tool_calls": 1,
+  "lean_calls": 2,
+  "input_tokens": 2104,
+  "output_tokens": 30240,
+  "total_tokens": 32344,
+  "runtime": 226.14549737499328,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260917T001511440652Z_p23_retrieval_apply.jsonl"
+}

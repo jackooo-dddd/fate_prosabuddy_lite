@@ -1,0 +1,42 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "retrieval_apply",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 1,
+  "solve_rate": 1.0,
+  "average_attempts": 2.0,
+  "average_attempts_among_solved": 2.0,
+  "proof_generation_api_calls": 2,
+  "retrieval_tool_calls": 1,
+  "lean_compiler_calls": 3,
+  "input_tokens": 3461,
+  "output_tokens": 71240,
+  "total_tokens": 74701,
+  "runtime": 423.5670717500034,
+  "problems": [
+    {
+      "problem_id": "16",
+      "theorem_name": "Ideal.span_eq_iff_associated",
+      "mode": "retrieval_apply",
+      "success": true,
+      "attempts": 2,
+      "final_proof": "by\n  constructor\n  · intro h\n    have hle1 : Ideal.span {r₁} ≤ Ideal.span {r₂} := le_of_eq h\n    have hle2 : Ideal.span {r₂} ≤ Ideal.span {r₁} := le_of_eq h.symm\n    have hmem1 : r₁ ∈ Ideal.span {r₂} :=\n      (Ideal.span_singleton_le_iff_mem (Ideal.span {r₂})).mp hle1\n    have hmem2 : r₂ ∈ Ideal.span {r₁} :=\n      (Ideal.span_singleton_le_iff_mem (Ideal.span {r₁})).mp hle2\n    have hdiv1 : r₂ ∣ r₁ := (Ideal.mem_span_singleton).mp hmem1\n    have hdiv2 : r₁ ∣ r₂ := (Ideal.mem_span_singleton).mp hmem2\n    rcases hdiv1 with ⟨c, hc⟩\n    rcases hdiv2 with ⟨d, hd⟩\n    by_cases hr2 : r₂ = 0\n    · refine ⟨1, isUnit_one, ?_⟩\n      rw [hr2, mul_zero]\n      rw [hr2] at hc\n      simpa using hc\n    · have hmul : r₂ * (c * d) = r₂ * 1 := by\n        calc\n          r₂ * (c * d) = (r₂ * c) * d := by rw [mul_assoc]\n          _ = r₁ * d := by rw [← hc]\n          _ = r₂ := hd.symm\n          _ = r₂ * 1 := by rw [mul_one]\n      have hcd : c * d = 1 := mul_left_cancel₀ hr2 hmul\n      let u : Rˣ := ⟨c, d, hcd, by rw [mul_comm, hcd]⟩\n      refine ⟨c, ⟨u, rfl⟩, ?_⟩\n      rw [hc, mul_comm]\n  · rintro ⟨u, hu, hr⟩\n    rcases hu with ⟨v, hv⟩\n    rw [← hv] at hr\n    have hdiv1 : r₂ ∣ r₁ := by\n      refine ⟨↑v, ?_⟩\n      rw [hr, mul_comm]\n    have hdiv2 : r₁ ∣ r₂ := by\n      refine ⟨↑(v⁻¹), ?_⟩\n      calc\n        r₂ = ↑(v⁻¹) * r₁ := by\n          rw [hr]\n          rw [← mul_assoc]\n          rw [Units.inv_mul v, one_mul]\n        _ = r₁ * ↑(v⁻¹) := by rw [mul_comm]\n    have hle1 : Ideal.span {r₁} ≤ Ideal.span {r₂} :=\n      (Ideal.span_singleton_le_iff_mem (Ideal.span {r₂})).mpr ((Ideal.mem_span_singleton).mpr hdiv1)\n    have hle2 : Ideal.span {r₂} ≤ Ideal.span {r₁} :=\n      (Ideal.span_singleton_le_iff_mem (Ideal.span {r₁})).mpr ((Ideal.mem_span_singleton).mpr hdiv2)\n    exact le_antisymm hle1 hle2",
+      "final_lean_return_code": 0,
+      "api_calls": 2,
+      "retrieval_tool_calls": 1,
+      "lean_calls": 3,
+      "input_tokens": 3461,
+      "output_tokens": 71240,
+      "total_tokens": 74701,
+      "runtime": 423.5670717500034,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_retrieval_apply_20260916T115530267519Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_retrieval_apply_20260916T115530267519Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "timestamp": "2026-09-16T12:02:33.897327+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_retrieval_apply_20260916T115530267519Z.jsonl"
+}

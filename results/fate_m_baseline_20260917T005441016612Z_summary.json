@@ -1,0 +1,43 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "baseline",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 1,
+  "solve_rate": 1.0,
+  "average_attempts": 3.0,
+  "average_attempts_among_solved": 3.0,
+  "proof_generation_api_calls": 3,
+  "retrieval_tool_calls": 0,
+  "lean_compiler_calls": 1,
+  "input_tokens": 950,
+  "output_tokens": 35356,
+  "total_tokens": 36306,
+  "runtime": 209.85928324999986,
+  "problems": [
+    {
+      "problem_id": "24",
+      "theorem_name": "isPrime_singleton",
+      "mode": "baseline",
+      "success": true,
+      "attempts": 3,
+      "final_proof": "by\n  exact Ideal.span_singleton_prime hp",
+      "final_lean_return_code": 0,
+      "api_calls": 3,
+      "retrieval_tool_calls": 0,
+      "lean_calls": 1,
+      "input_tokens": 950,
+      "output_tokens": 35356,
+      "total_tokens": 36306,
+      "runtime": 209.85928324999986,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260917T005441016612Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_baseline_20260917T005441016612Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "max_output_tokens": 16384,
+  "timestamp": "2026-09-17T00:58:22.243277+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260917T005441016612Z.jsonl"
+}

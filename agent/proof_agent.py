@@ -128,7 +128,7 @@ class ProofAgent:
                 format_retrieval(retrieval_result)
                 if retrieval_result.triggered else None
             )
-
+            # What does the prefix means here
             using_prefix = self.mode.uses_prefix_repair and certified is not None
             if using_prefix:
                 messages = build_prefix_messages(
@@ -143,6 +143,7 @@ class ProofAgent:
                 messages = build_generation_messages(
                     problem,
                     self.mode,
+                    # 把上一次 compiler failure 发给下一次 API
                     previous_proof=previous_proof,
                     primary_error=primary_error,
                     failure_class=failure_kind.value if failure_kind else None,

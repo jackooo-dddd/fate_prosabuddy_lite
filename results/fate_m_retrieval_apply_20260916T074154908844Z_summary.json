@@ -1,0 +1,42 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "retrieval_apply",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 1,
+  "solve_rate": 1.0,
+  "average_attempts": 1.0,
+  "average_attempts_among_solved": 1.0,
+  "proof_generation_api_calls": 1,
+  "retrieval_tool_calls": 1,
+  "lean_compiler_calls": 2,
+  "input_tokens": 384,
+  "output_tokens": 6737,
+  "total_tokens": 7121,
+  "runtime": 92.91963199997554,
+  "problems": [
+    {
+      "problem_id": "1",
+      "theorem_name": "prod_card_eq_card_pow",
+      "mode": "retrieval_apply",
+      "success": true,
+      "attempts": 1,
+      "final_proof": "by\n  rw [Fintype.card_fun]\n  simp",
+      "final_lean_return_code": 0,
+      "api_calls": 1,
+      "retrieval_tool_calls": 1,
+      "lean_calls": 2,
+      "input_tokens": 384,
+      "output_tokens": 6737,
+      "total_tokens": 7121,
+      "runtime": 92.91963199997554,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_retrieval_apply_20260916T074154908844Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_retrieval_apply_20260916T074154908844Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "timestamp": "2026-09-16T07:43:27.929772+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_retrieval_apply_20260916T074154908844Z.jsonl"
+}

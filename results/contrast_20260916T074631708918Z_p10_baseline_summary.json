@@ -1,0 +1,17 @@
+{
+  "problem_id": "10",
+  "theorem_name": "pow_mem_ker_of_card_eq",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 3,
+  "final_proof": "by\n  intro g\n  rw [MonoidHom.mem_ker, map_pow]\n  let x : f.range := ⟨f g, ⟨g, rfl⟩⟩\n  have hdiv : orderOf x ∣ n := by\n    rw [← h]\n    exact orderOf_dvd_natCard x\n  have hx : x ^ n = 1 := orderOf_dvd_iff_pow_eq_one.mp hdiv\n  have hval : (f g) ^ n = 1 := by\n    have := congrArg (fun y : f.range => (y : H)) hx\n    simpa [x] using this\n  exact hval",
+  "final_lean_return_code": 0,
+  "api_calls": 3,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 3,
+  "input_tokens": 1602,
+  "output_tokens": 52184,
+  "total_tokens": 53786,
+  "runtime": 298.31356350000715,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p10_baseline.jsonl"
+}

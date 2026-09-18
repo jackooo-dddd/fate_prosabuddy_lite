@@ -1,0 +1,17 @@
+{
+  "problem_id": "11",
+  "theorem_name": "mul_sub_and_sub_mul",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  exact ⟨mul_sub a b c, sub_mul b c a⟩",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 290,
+  "output_tokens": 2186,
+  "total_tokens": 2476,
+  "runtime": 33.49605345900636,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p11_baseline.jsonl"
+}

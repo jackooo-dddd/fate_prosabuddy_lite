@@ -1,0 +1,43 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "baseline",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 0,
+  "solve_rate": 0.0,
+  "average_attempts": 5.0,
+  "average_attempts_among_solved": 0.0,
+  "proof_generation_api_calls": 5,
+  "retrieval_tool_calls": 0,
+  "lean_compiler_calls": 2,
+  "input_tokens": 2405,
+  "output_tokens": 77445,
+  "total_tokens": 79850,
+  "runtime": 468.8738683340489,
+  "problems": [
+    {
+      "problem_id": "25",
+      "theorem_name": "primeAvoidance",
+      "mode": "baseline",
+      "success": false,
+      "attempts": 5,
+      "final_proof": "by\n  classical\n  by_contra h\n  push_neg at h\n  have hnot : ∀ i : Fin (m + 1), ¬ A ≤ P i := by\n    intro i hi\n    change A.carrier ⊆ (P i : Set R) at hi\n    exact h i hi\n  obtain ⟨x, hxA, hxP⟩ := Ideal.primeAvoidance A P pp hnot\n  rcases Set.mem_iUnion.mp (hA hxA) with ⟨i, hi⟩\n  exact hxP i hi",
+      "final_lean_return_code": 1,
+      "api_calls": 5,
+      "retrieval_tool_calls": 0,
+      "lean_calls": 2,
+      "input_tokens": 2405,
+      "output_tokens": 77445,
+      "total_tokens": 79850,
+      "runtime": 468.8738683340489,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260917T015057060469Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_baseline_20260917T015057060469Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "max_output_tokens": 16384,
+  "timestamp": "2026-09-17T01:58:46.020855+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260917T015057060469Z.jsonl"
+}

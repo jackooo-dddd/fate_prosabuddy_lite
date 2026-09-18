@@ -1,0 +1,42 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "baseline",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 1,
+  "solve_rate": 1.0,
+  "average_attempts": 3.0,
+  "average_attempts_among_solved": 3.0,
+  "proof_generation_api_calls": 3,
+  "retrieval_tool_calls": 0,
+  "lean_compiler_calls": 3,
+  "input_tokens": 2753,
+  "output_tokens": 89462,
+  "total_tokens": 92215,
+  "runtime": 523.0427913330495,
+  "problems": [
+    {
+      "problem_id": "16",
+      "theorem_name": "Ideal.span_eq_iff_associated",
+      "mode": "baseline",
+      "success": true,
+      "attempts": 3,
+      "final_proof": "by\n  constructor\n  · intro h\n    have h1 : r₂ ∣ r₁ := by\n      have hmem : r₁ ∈ Ideal.span ({r₂} : Set R) := by\n        rw [← h]\n        exact Ideal.mem_span_singleton.mpr (dvd_refl r₁)\n      exact Ideal.mem_span_singleton.mp hmem\n    have h2 : r₁ ∣ r₂ := by\n      have hmem : r₂ ∈ Ideal.span ({r₁} : Set R) := by\n        rw [h]\n        exact Ideal.mem_span_singleton.mpr (dvd_refl r₂)\n      exact Ideal.mem_span_singleton.mp hmem\n    by_cases hr2 : r₂ = 0\n    · have hr1 : r₁ = 0 := by\n        rcases h1 with ⟨c, hc⟩\n        rw [hr2, zero_mul] at hc\n        exact hc\n      refine ⟨1, isUnit_one, ?_⟩\n      rw [hr1, hr2]\n      simp\n    · rcases h1 with ⟨a, ha⟩\n      rcases h2 with ⟨b, hb⟩\n      have hr1 : r₁ ≠ 0 := by\n        intro h0\n        have : r₂ = 0 := by\n          calc\n            r₂ = r₁ * b := hb\n            _ = 0 := by rw [h0, zero_mul]\n        exact hr2 this\n      have h_eq : r₁ = r₁ * (a * b) := by\n        calc\n          r₁ = r₂ * a := ha\n          _ = (r₁ * b) * a := by rw [hb]\n          _ = r₁ * (a * b) := by ring\n      have hab : a * b = 1 := by\n        have hmul : r₁ * (a * b) = r₁ * 1 := by\n          rw [mul_one]\n          exact h_eq.symm\n        exact mul_left_cancel₀ hr1 hmul\n      have hau : IsUnit a :=\n        ⟨⟨a, b, hab, by rw [mul_comm]; exact hab⟩, rfl⟩\n      refine ⟨a, hau, ?_⟩\n      calc\n        r₁ = r₂ * a := ha\n        _ = a * r₂ := by rw [mul_comm]\n  · rintro ⟨u, hu, heq⟩\n    rw [heq]\n    rcases hu with ⟨v, hv⟩\n    rw [← hv]\n    apply le_antisymm\n    · rw [Ideal.span_le]\n      intro x hx\n      rw [Set.mem_singleton_iff] at hx\n      rw [hx]\n      exact Ideal.mem_span_singleton.mpr ⟨(v : R), mul_comm (v : R) r₂⟩\n    · rw [Ideal.span_le]\n      intro x hx\n      rw [Set.mem_singleton_iff] at hx\n      rw [hx]\n      refine Ideal.mem_span_singleton.mpr ⟨((v⁻¹ : Rˣ) : R), ?_⟩\n      have hv_mul : (v : R) * ((v⁻¹ : Rˣ) : R) = 1 := by\n        simp\n      calc\n        r₂ = r₂ * 1 := by rw [mul_one]\n        _ = r₂ * ((v : R) * ((v⁻¹ : Rˣ) : R)) := by rw [hv_mul]\n        _ = ((v : R) * r₂) * ((v⁻¹ : Rˣ) : R) := by ring",
+      "final_lean_return_code": 0,
+      "api_calls": 3,
+      "retrieval_tool_calls": 0,
+      "lean_calls": 3,
+      "input_tokens": 2753,
+      "output_tokens": 89462,
+      "total_tokens": 92215,
+      "runtime": 523.0427913330495,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260916T120840868860Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_baseline_20260916T120840868860Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "timestamp": "2026-09-16T12:17:24.009728+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260916T120840868860Z.jsonl"
+}

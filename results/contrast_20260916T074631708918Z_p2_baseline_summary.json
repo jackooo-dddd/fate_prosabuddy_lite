@@ -1,0 +1,17 @@
+{
+  "problem_id": "2",
+  "theorem_name": "monoidHom_eq_of_isCyclic",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  intro g\n  rcases h g with ⟨n, rfl⟩\n  rw [map_pow, map_pow, heq]",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 502,
+  "output_tokens": 11046,
+  "total_tokens": 11548,
+  "runtime": 74.59056095802225,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p2_baseline.jsonl"
+}

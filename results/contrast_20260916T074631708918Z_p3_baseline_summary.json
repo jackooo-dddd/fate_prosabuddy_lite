@@ -1,0 +1,17 @@
+{
+  "problem_id": "3",
+  "theorem_name": "comp_surjective_of_surjective",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  intro k\n  rcases hg k with ⟨h, rfl⟩\n  rcases hf h with ⟨x, rfl⟩\n  exact ⟨x, rfl⟩",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 325,
+  "output_tokens": 450,
+  "total_tokens": 775,
+  "runtime": 22.56440987501992,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p3_baseline.jsonl"
+}

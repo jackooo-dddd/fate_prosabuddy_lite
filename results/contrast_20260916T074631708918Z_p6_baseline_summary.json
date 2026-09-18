@@ -1,0 +1,17 @@
+{
+  "problem_id": "6",
+  "theorem_name": "MonoidHom.eq_id_of_card_gcd_eq_one",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  intro p\n  have hH : orderOf (f p) ∣ Nat.card H := orderOf_dvd_natCard (f p)\n  have hmap : orderOf (f p) ∣ orderOf p := by\n    rw [orderOf_dvd_iff_pow_eq_one]\n    rw [← map_pow, pow_orderOf_eq_one, map_one]\n  have hG : orderOf (f p) ∣ Nat.card G := dvd_trans hmap (orderOf_dvd_natCard p)\n  have hgcd : orderOf (f p) ∣ (Nat.card H).gcd (Nat.card G) := Nat.dvd_gcd hH hG\n  rw [h] at hgcd\n  have hone : orderOf (f p) = 1 := Nat.dvd_one.mp hgcd\n  exact orderOf_eq_one_iff.mp hone",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 346,
+  "output_tokens": 8921,
+  "total_tokens": 9267,
+  "runtime": 68.1587446249905,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p6_baseline.jsonl"
+}

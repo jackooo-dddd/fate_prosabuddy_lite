@@ -1,0 +1,17 @@
+{
+  "problem_id": "21",
+  "theorem_name": "existUnique_linear_solution",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  refine ⟨-b * ↑a⁻¹, ?_, ?_⟩\n  · calc\n      ↑a * (-b * ↑a⁻¹) + b = -(↑a * (b * ↑a⁻¹)) + b := by ring\n      _ = -(b * (↑a * ↑a⁻¹)) + b := by ring\n      _ = -(b * 1) + b := by rw [Units.mul_inv]\n      _ = 0 := by ring\n  · intro y hy\n    have h : ↑a * y = -b := add_eq_zero_iff_eq_neg.mp hy\n    calc\n      y = (↑a⁻¹ * ↑a) * y := by rw [Units.inv_mul, one_mul]\n      _ = ↑a⁻¹ * (↑a * y) := by rw [mul_assoc]\n      _ = ↑a⁻¹ * (-b) := by rw [h]\n      _ = -b * ↑a⁻¹ := by ring",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 268,
+  "output_tokens": 10495,
+  "total_tokens": 10763,
+  "runtime": 97.65690441703191,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260917T001511440652Z_p21_baseline.jsonl"
+}

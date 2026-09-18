@@ -1,0 +1,17 @@
+{
+  "problem_id": "15",
+  "theorem_name": "left_right_inverse_eq",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 1,
+  "final_proof": "by\n  calc\n    y = 1 * y := by rw [one_mul]\n    _ = (z * x) * y := by rw [hz]\n    _ = z * (x * y) := by rw [mul_assoc]\n    _ = z * 1 := by rw [hy]\n    _ = z := by rw [mul_one]",
+  "final_lean_return_code": 0,
+  "api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 1,
+  "input_tokens": 349,
+  "output_tokens": 392,
+  "total_tokens": 741,
+  "runtime": 20.78714183298871,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p15_baseline.jsonl"
+}

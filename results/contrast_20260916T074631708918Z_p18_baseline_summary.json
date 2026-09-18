@@ -1,0 +1,17 @@
+{
+  "problem_id": "18",
+  "theorem_name": "Ideal.add_le_of_le",
+  "mode": "baseline",
+  "success": true,
+  "attempts": 3,
+  "final_proof": "by\n  exact sup_le h₁ h₂",
+  "final_lean_return_code": 0,
+  "api_calls": 3,
+  "retrieval_tool_calls": 0,
+  "lean_calls": 3,
+  "input_tokens": 1207,
+  "output_tokens": 56101,
+  "total_tokens": 57308,
+  "runtime": 350.6121576669975,
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/contrast_20260916T074631708918Z_p18_baseline.jsonl"
+}

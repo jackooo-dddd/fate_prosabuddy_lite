@@ -1,0 +1,42 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "prefix_repair",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 1,
+  "solve_rate": 1.0,
+  "average_attempts": 1.0,
+  "average_attempts_among_solved": 1.0,
+  "proof_generation_api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_compiler_calls": 1,
+  "input_tokens": 405,
+  "output_tokens": 29472,
+  "total_tokens": 29877,
+  "runtime": 173.98253691702848,
+  "problems": [
+    {
+      "problem_id": "16",
+      "theorem_name": "Ideal.span_eq_iff_associated",
+      "mode": "prefix_repair",
+      "success": true,
+      "attempts": 1,
+      "final_proof": "by\n  constructor\n  · intro h\n    have h₁ : r₁ ∈ Ideal.span ({r₂} : Set R) := by\n      rw [← h]\n      exact Ideal.mem_span_singleton_self r₁\n    have h₂ : r₂ ∈ Ideal.span ({r₁} : Set R) := by\n      rw [h]\n      exact Ideal.mem_span_singleton_self r₂\n    have hdiv₁ : r₂ ∣ r₁ := Ideal.mem_span_singleton.mp h₁\n    have hdiv₂ : r₁ ∣ r₂ := Ideal.mem_span_singleton.mp h₂\n    rcases hdiv₁ with ⟨a, ha⟩\n    rcases hdiv₂ with ⟨b, hb⟩\n    by_cases hr₁ : r₁ = 0\n    · have hr₂ : r₂ = 0 := by simpa [hr₁] using hb\n      refine ⟨1, isUnit_one, ?_⟩\n      simp [hr₁, hr₂]\n    · have h_eq : r₁ = r₁ * (b * a) := by\n        calc\n          r₁ = r₂ * a := ha\n          _ = (r₁ * b) * a := by rw [hb]\n          _ = r₁ * (b * a) := by rw [mul_assoc]\n      have hba : b * a = 1 := by\n        have h_cancel : r₁ * (b * a) = r₁ * 1 := by simpa using h_eq.symm\n        exact mul_left_cancel₀ hr₁ h_cancel\n      have ha_unit : IsUnit a := by\n        exact isUnit_iff_exists_inv.mpr ⟨b, by simpa [mul_comm] using hba⟩\n      refine ⟨a, ha_unit, ?_⟩\n      simpa [mul_comm] using ha\n  · rintro ⟨u, hu, hr⟩\n    rw [hr]\n    apply le_antisymm\n    · rw [Ideal.span_singleton_le_span_singleton]\n      exact ⟨u, by rw [mul_comm]⟩\n    · rw [Ideal.span_singleton_le_span_singleton]\n      rcases (isUnit_iff_exists_inv.mp hu) with ⟨v, hv⟩\n      refine ⟨v, ?_⟩\n      calc\n        r₂ = 1 * r₂ := by rw [one_mul]\n        _ = (u * v) * r₂ := by rw [hv]\n        _ = u * (v * r₂) := by rw [mul_assoc]\n        _ = u * (r₂ * v) := by rw [mul_comm v r₂]\n        _ = (u * r₂) * v := by rw [← mul_assoc]",
+      "final_lean_return_code": 0,
+      "api_calls": 1,
+      "retrieval_tool_calls": 0,
+      "lean_calls": 1,
+      "input_tokens": 405,
+      "output_tokens": 29472,
+      "total_tokens": 29877,
+      "runtime": 173.98253691702848,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_prefix_repair_20260916T120251119559Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_prefix_repair_20260916T120251119559Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "timestamp": "2026-09-16T12:05:45.168098+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_prefix_repair_20260916T120251119559Z.jsonl"
+}

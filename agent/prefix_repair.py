@@ -11,6 +11,40 @@ from .evaluator import extract_proof, prohibited_construct
 from .lean_runner import LeanCheckResult, LeanRunner
 
 
+"""
+Assume a Lean proof of the form:
+theorem foo (a b c : Nat)
+    (h1 : a = b)
+    (h2 : b = c) :
+    a = c := by
+  rw [h1]
+  rw [h2]
+  exact Nat.zero_le c
+The last line is nonsense. Lean effectively reaches:
+rw [h1]
+rw [h2]
+goal:
+⊢ c = c
+So prefix repair can certify:
+by
+  rw [h1]
+  rw [h2]
+and tell DeepSeek this prefix is already valid:
+by
+  rw [h1]
+  rw [h2]
+Current goal:
+⊢ c = c
+Return only continuation tactics.
+
+The model might return: rfl
+Then assemble_suffix() combines:
+by
+  rw [h1]
+  rw [h2]
+  rfl
+and runs Lean again.
+"""
 @dataclass(frozen=True)
 class PrefixCertification:
     """A proof prefix whose only compiler complaint is unfinished goals."""

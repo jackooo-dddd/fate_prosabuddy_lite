@@ -1,0 +1,42 @@
+{
+  "benchmark": "FATE-M",
+  "mode": "baseline",
+  "model": "deepseek-flash",
+  "total_problems": 1,
+  "solved_problems": 1,
+  "solve_rate": 1.0,
+  "average_attempts": 1.0,
+  "average_attempts_among_solved": 1.0,
+  "proof_generation_api_calls": 1,
+  "retrieval_tool_calls": 0,
+  "lean_compiler_calls": 1,
+  "input_tokens": 350,
+  "output_tokens": 35917,
+  "total_tokens": 36267,
+  "runtime": 205.04516629094724,
+  "problems": [
+    {
+      "problem_id": "16",
+      "theorem_name": "Ideal.span_eq_iff_associated",
+      "mode": "baseline",
+      "success": true,
+      "attempts": 1,
+      "final_proof": "by\n  constructor\n  · intro h\n    have h12 : r₂ ∣ r₁ := by\n      have : r₁ ∈ Ideal.span {r₂} := by\n        rw [← h]\n        exact Ideal.subset_span (by simp)\n      simpa [Ideal.mem_span_singleton] using this\n    have h21 : r₁ ∣ r₂ := by\n      have : r₂ ∈ Ideal.span {r₁} := by\n        rw [h]\n        exact Ideal.subset_span (by simp)\n      simpa [Ideal.mem_span_singleton] using this\n    rcases h12 with ⟨a, ha⟩\n    rcases h21 with ⟨b, hb⟩\n    by_cases h₁ : r₁ = 0\n    · have h₂ : r₂ = 0 := by simpa [h₁] using hb\n      refine ⟨1, isUnit_one, ?_⟩\n      rw [h₁, h₂]\n      simp\n    · have h_eq : r₁ * (b * a) = r₁ * 1 := by\n        rw [mul_one]\n        calc\n          r₁ * (b * a) = (r₁ * b) * a := by ring\n          _ = r₂ * a := by rw [← hb]\n          _ = r₁ := by rw [← ha]\n      have hba : b * a = 1 := mul_left_cancel₀ h₁ h_eq\n      have ha_unit : IsUnit a := by\n        rw [isUnit_iff_exists_inv]\n        exact ⟨b, by rw [mul_comm, hba]⟩\n      exact ⟨a, ha_unit, by simpa [mul_comm] using ha⟩\n  · rintro ⟨u, hu, h⟩\n    rw [h]\n    exact Ideal.span_singleton_mul_left_unit hu r₂",
+      "final_lean_return_code": 0,
+      "api_calls": 1,
+      "retrieval_tool_calls": 0,
+      "lean_calls": 1,
+      "input_tokens": 350,
+      "output_tokens": 35917,
+      "total_tokens": 36267,
+      "runtime": 205.04516629094724,
+      "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260916T123223362294Z.jsonl"
+    }
+  ],
+  "run_id": "fate_m_baseline_20260916T123223362294Z",
+  "benchmark_commit": "4eb33c8ccd0ff058b461cd763cc406509129743f",
+  "max_attempts": 5,
+  "temperature": 0.0,
+  "timestamp": "2026-09-16T12:35:48.486779+00:00",
+  "trace_file": "/Users/shunqiwang/CityuHK/Research/Lean/Lean4 Benchmark/fate_prosabuddy_lite/results/fate_m_baseline_20260916T123223362294Z.jsonl"
+}
